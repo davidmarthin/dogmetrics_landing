@@ -1,1 +1,102 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DogMetrics — Analiza tus entrenos de agility</title>
+  <meta name="description" content="Análisis de vídeo, timeline con marcadores y overlay, y herramientas para entrenar mejor en agility canino." />
+  <style>
+    :root{--bg:#0b1220;--card:#101a2e;--txt:#e8eefc;--muted:#a9b7d3;--teal:#1CC6B8;--blue:#1B3C68;--orange:#FF8A3C}
+    *{box-sizing:border-box} body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:radial-gradient(1200px 600px at 20% 0%, rgba(28,198,184,.18), transparent 60%), radial-gradient(1200px 600px at 80% 0%, rgba(255,138,60,.12), transparent 60%), var(--bg); color:var(--txt)}
+    a{color:inherit} .wrap{max-width:1050px;margin:0 auto;padding:32px 18px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.2px}
+    .badge{font-size:12px;color:var(--muted);border:1px solid rgba(255,255,255,.12);padding:6px 10px;border-radius:999px}
+    .hero{display:grid;grid-template-columns:1.25fr .75fr;gap:18px;margin-top:28px}
+    .card{background:rgba(16,26,46,.72);border:1px solid rgba(255,255,255,.10);border-radius:18px;padding:18px;backdrop-filter: blur(8px)}
+    h1{font-size:42px;line-height:1.05;margin:0 0 10px}
+    p{margin:0;color:var(--muted);line-height:1.55}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;padding:12px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.12);text-decoration:none;font-weight:700}
+    .btn.primary{background:linear-gradient(135deg, rgba(28,198,184,.95), rgba(27,60,104,.95));border-color:rgba(28,198,184,.35)}
+    .btn.secondary{background:rgba(255,255,255,.04)}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+    .kpi{padding:14px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08)}
+    .kpi b{display:block;font-size:14px}
+    .kpi span{display:block;color:var(--muted);font-size:13px;margin-top:6px}
+    .list{margin:0;padding-left:18px;color:var(--muted);line-height:1.7}
+    footer{margin-top:22px;color:var(--muted);font-size:12px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    @media (max-width:900px){.hero{grid-template-columns:1fr} h1{font-size:36px} .grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="logo">
+        <span style="width:10px;height:10px;border-radius:50%;background:var(--teal);display:inline-block"></span>
+        DogMetrics
+      </div>
+      <div class="badge">Beta privada · Lista de espera</div>
+    </header>
+
+    <section class="hero">
+      <div class="card">
+        <h1>Entrena mejor en agility con <span style="color:var(--teal)">vídeo + métricas</span>.</h1>
+        <p>
+          Marca momentos clave en un timeline, dibuja overlay frame a frame, compara repeticiones y construye un histórico
+          de sesiones para ver progreso real (no solo “sensaciones”).
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#waitlist">Unirme a la lista de espera</a>
+          <a class="btn secondary" href="#features">Ver funcionalidades</a>
+        </div>
+
+        <div class="grid" aria-label="Highlights">
+          <div class="kpi"><b>Timeline tipo FrameIO</b><span>Marcadores, notas y cortes por intentos.</span></div>
+          <div class="kpi"><b>Overlay preciso</b><span>Dibujo/texto sincronizado al frame.</span></div>
+          <div class="kpi"><b>Comparación</b><span>Side-by-side de dos momentos o dos runs.</span></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="margin:0 0 10px;font-size:16px">Qué resuelve</h3>
+        <ul class="list">
+          <li>“¿Dónde perdimos tiempo?” sin adivinar.</li>
+          <li>Contacto / slalom / líneas: evidencia visual + anotaciones.</li>
+          <li>Mejor feedback entrenador↔alumno con sesiones compartidas.</li>
+        </ul>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,.10);margin:16px 0">
+
+        <h3 id="features" style="margin:0 0 10px;font-size:16px">MVP (v1)</h3>
+        <ul class="list">
+          <li>Subida de vídeo + recorte de tramo (TC in/out).</li>
+          <li>Timeline con eventos (intentos, fallos, comandos).</li>
+          <li>Overlay de dibujo y texto.</li>
+          <li>Compartir sesión con entrenador.</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="waitlist" class="card" style="margin-top:18px">
+      <h2 style="margin:0 0 8px;font-size:20px">Lista de espera</h2>
+      <p>Déjame tu email y te aviso cuando abramos la beta. (Esto es un placeholder; luego lo conectamos a un formulario real.)</p>
+
+      <!-- Placeholder simple sin backend -->
+      <form onsubmit="event.preventDefault(); alert('¡Gracias! Luego conectamos el formulario.');" style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <input required type="email" placeholder="tu@email.com" style="flex:1;min-width:220px;padding:12px 12px;border-radius:12px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.18);color:var(--txt)">
+        <button class="btn primary" type="submit" style="cursor:pointer">Apuntarme</button>
+      </form>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> DogMetrics</div>
+      <div style="opacity:.9">Contacto: hello@dogmetrics (cámbialo)</div>
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
 
