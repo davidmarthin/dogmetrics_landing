@@ -1,0 +1,407 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DogMetrics — Convierte tus entrenos en datos claros</title>
+  <meta name="description" content="DogMetrics analiza tus vídeos de agility con IA y los transforma en métricas claras, timeline y clips destacados para entrenar con más criterio." />
+
+  <!-- Fonts (según guía) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --blue:#1B3C68;
+      --teal:#1CC6B8;
+      --orange:#FF8A3C;
+      --dark:#10141A;
+      --light:#F4F7FB;
+
+      --bg: #070b12;
+      --card: rgba(255,255,255,.06);
+      --card2: rgba(255,255,255,.04);
+      --stroke: rgba(255,255,255,.10);
+      --text: rgba(255,255,255,.92);
+      --muted: rgba(255,255,255,.70);
+    }
+
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 700px at 15% 0%, rgba(28,198,184,.22), transparent 55%),
+        radial-gradient(900px 600px at 85% 10%, rgba(255,138,60,.14), transparent 60%),
+        radial-gradient(900px 700px at 60% 100%, rgba(27,60,104,.35), transparent 55%),
+        var(--bg);
+    }
+    a{color:inherit;text-decoration:none}
+    .wrap{max-width:1120px;margin:0 auto;padding:28px 18px 70px}
+    .topbar{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .brand{display:flex;align-items:center;gap:10px}
+    .dot{width:10px;height:10px;border-radius:50%;background:var(--teal);box-shadow:0 0 0 6px rgba(28,198,184,.12)}
+    .brand b{font-family:"Space Grotesk", Inter, sans-serif;font-size:18px;letter-spacing:.2px}
+    .pill{
+      font-size:12px;color:var(--muted);
+      border:1px solid var(--stroke);
+      background: rgba(255,255,255,.03);
+      padding:7px 10px;border-radius:999px
+    }
+    .nav{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+    .nav a{font-size:13px;color:var(--muted)}
+    .nav a:hover{color:var(--text)}
+
+    .hero{
+      margin-top:26px;
+      display:grid;
+      grid-template-columns: 1.35fr .65fr;
+      gap:16px;
+    }
+    .card{
+      border:1px solid var(--stroke);
+      background: linear-gradient(180deg, rgba(255,255,255,.07), rgba(255,255,255,.03));
+      border-radius:20px;
+      padding:18px;
+      backdrop-filter: blur(10px);
+    }
+    h1,h2,h3{margin:0;font-family:"Space Grotesk", Inter, sans-serif}
+    h1{font-size:44px;line-height:1.03;letter-spacing:-.6px}
+    .sub{margin-top:12px;color:var(--muted);line-height:1.6;font-size:16px;max-width:62ch}
+
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      padding:12px 14px;border-radius:14px;
+      border:1px solid var(--stroke);
+      font-weight:700;font-size:14px;
+    }
+    .btn.primary{
+      border-color: rgba(28,198,184,.35);
+      background: linear-gradient(135deg, rgba(28,198,184,.95), rgba(27,60,104,.95));
+    }
+    .btn.secondary{background: rgba(255,255,255,.04)}
+    .btn:hover{transform: translateY(-1px)}
+    .mini{
+      margin-top:16px;
+      display:grid;grid-template-columns:repeat(3,1fr);gap:10px
+    }
+    .mini .k{
+      background:rgba(0,0,0,.18);
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:16px;
+      padding:12px;
+    }
+    .mini .k b{display:block;font-size:13px}
+    .mini .k span{display:block;color:var(--muted);font-size:12.5px;margin-top:6px;line-height:1.35}
+
+    .side h3{font-size:16px;margin-bottom:10px}
+    .side ul{margin:0;padding-left:18px;color:var(--muted);line-height:1.8}
+    .hr{height:1px;background:rgba(255,255,255,.10);margin:14px 0}
+
+    section{margin-top:18px}
+    .grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .tile{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius:18px;
+      padding:16px;
+    }
+    .tile h3{font-size:16px;margin-bottom:8px}
+    .tile p{margin:0;color:var(--muted);line-height:1.6}
+
+    .sectionTitle{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:10px}
+    .sectionTitle h2{font-size:24px}
+    .sectionTitle span{color:var(--muted);font-size:13px}
+
+    /* Pricing */
+    .pricing{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+    .priceCard{
+      border:1px solid rgba(255,255,255,.12);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius:20px;
+      padding:16px;
+      position:relative;
+    }
+    .tag{
+      position:absolute;top:14px;right:14px;
+      font-size:11px;color:rgba(0,0,0,.75);
+      background: rgba(28,198,184,.95);
+      padding:6px 8px;border-radius:999px;
+      font-weight:800;
+    }
+    .priceCard h3{font-size:18px}
+    .price{margin-top:8px;font-size:34px;font-family:"Space Grotesk", Inter, sans-serif}
+    .price small{font-size:14px;color:var(--muted)}
+    .priceCard ul{margin:12px 0 0;padding-left:18px;color:var(--muted);line-height:1.85}
+    .fine{margin-top:10px;color:var(--muted);font-size:12.5px;line-height:1.5}
+
+    /* FAQ */
+    details{
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.03);
+      border-radius:16px;
+      padding:12px 14px;
+    }
+    details summary{cursor:pointer;font-weight:700}
+    details p{margin:10px 0 0;color:var(--muted);line-height:1.6}
+
+    footer{
+      margin-top:24px;
+      display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;
+      color:var(--muted);font-size:12px
+    }
+
+    @media (max-width:980px){
+      .hero{grid-template-columns:1fr}
+      h1{font-size:38px}
+      .mini{grid-template-columns:1fr}
+      .grid2,.grid3,.pricing{grid-template-columns:1fr}
+      .nav{display:none}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <span class="dot"></span>
+        <b>DogMetrics</b>
+        <span class="pill">Beta privada</span>
+      </div>
+      <div class="nav">
+        <a href="#como">Cómo funciona</a>
+        <a href="#paraquien">Para quién</a>
+        <a href="#diferente">Por qué es diferente</a>
+        <a href="#precios">Precios</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <a class="btn secondary" href="#waitlist">Unirme</a>
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="card">
+        <h1>Convierte tus entrenos en <span style="color:var(--teal)">datos claros</span> y decisiones concretas.</h1>
+        <p class="sub">
+          En agility todo ocurre en décimas de segundo. DogMetrics analiza tus vídeos con IA y te devuelve un informe visual:
+          timeline, métricas clave y clips destacados para entender qué pasó realmente.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#waitlist">Entrar en la lista de espera</a>
+          <a class="btn secondary" href="#precios">Ver planes</a>
+        </div>
+
+        <div class="mini">
+          <div class="k"><b>Timeline interactivo</b><span>Eventos, intentos, errores y navegación rápida.</span></div>
+          <div class="k"><b>Vídeo + métricas</b><span>Tiempos, patrones y evolución entre sesiones.</span></div>
+          <div class="k"><b>Timing de órdenes</b><span>Relación entre tu voz y las decisiones del perro.</span></div>
+        </div>
+      </div>
+
+      <div class="card side">
+        <h3>Qué es DogMetrics</h3>
+        <ul>
+          <li>Una herramienta de análisis, no otra app de cronómetro.</li>
+          <li>Especializada en agility: perro, guía y obstáculos.</li>
+          <li>Objetividad + memoria: datos y clips siempre accesibles.</li>
+        </ul>
+
+        <div class="hr"></div>
+
+        <h3>MVP (v1)</h3>
+        <ul>
+          <li>Subida de vídeo + recorte (TC in/out).</li>
+          <li>Timeline con marcadores.</li>
+          <li>Overlay de dibujo/texto por frame.</li>
+          <li>Compartir sesiones con entrenador.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section id="como" class="card">
+      <div class="sectionTitle">
+        <h2>Cómo funciona</h2>
+        <span>Simple por fuera. Potente por dentro.</span>
+      </div>
+
+      <div class="grid3">
+        <div class="tile">
+          <h3>1) Subes tu vídeo</h3>
+          <p>Entreno o competición. Seleccionas el tramo y listo.</p>
+        </div>
+        <div class="tile">
+          <h3>2) Analizamos con IA</h3>
+          <p>Detectamos perro y obstáculos, organizamos eventos y medimos métricas útiles.</p>
+        </div>
+        <div class="tile">
+          <h3>3) Recibes el informe</h3>
+          <p>Timeline, métricas y highlights para revisar con calma (y entrenar con criterio).</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PARA QUIÉN -->
+    <section id="paraquien" class="grid2">
+      <div class="card">
+        <div class="sectionTitle">
+          <h2>Para quién</h2>
+          <span>Guías · Entrenadores · Clubs</span>
+        </div>
+        <div class="grid3">
+          <div class="tile">
+            <h3>Guías</h3>
+            <p>Entrena con objetivos claros, no solo repeticiones.</p>
+          </div>
+          <div class="tile">
+            <h3>Entrenadores</h3>
+            <p>Feedback más preciso con vídeo marcado y métricas explicables.</p>
+          </div>
+          <div class="tile">
+            <h3>Clubs</h3>
+            <p>Profesionaliza entrenos y ofrece valor añadido a tus deportistas.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" id="diferente">
+        <div class="sectionTitle">
+          <h2>Por qué es diferente</h2>
+          <span>Deporte + datos, sin “corporativo gris”</span>
+        </div>
+        <div class="grid3">
+          <div class="tile">
+            <h3>Especializado</h3>
+            <p>No es una herramienta genérica: está diseñada para agility.</p>
+          </div>
+          <div class="tile">
+            <h3>Perro + guía</h3>
+            <p>No mira solo el tiempo: mira decisiones, líneas y ejecución.</p>
+          </div>
+          <div class="tile">
+            <h3>Timing real</h3>
+            <p>Ayuda a responder: “¿llegó tarde mi orden o el perro no entendió?”</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRECIOS -->
+    <section id="precios" class="card">
+      <div class="sectionTitle">
+        <h2>Planes</h2>
+        <span>Elige según tu volumen y horizonte de guardado</span>
+      </div>
+
+      <div class="pricing">
+        <div class="priceCard">
+          <h3>SOLO</h3>
+          <div class="price">15€ <small>/ mes</small></div>
+          <ul>
+            <li>1 perro</li>
+            <li>8 entrenos / mes</li>
+            <li>Competiciones mensuales ilimitadas</li>
+            <li>Compartir sesiones</li>
+            <li>Máx. 3 entrenos pendientes sin recap</li>
+          </ul>
+          <div class="fine">Ideal si entrenas 1 perro y quieres progreso medible.</div>
+        </div>
+
+        <div class="priceCard">
+          <span class="tag">Más popular</span>
+          <h3>COACH</h3>
+          <div class="price">25€ <small>/ mes</small></div>
+          <ul>
+            <li>2 perros</li>
+            <li>Sesiones de entrenamiento ilimitadas</li>
+            <li>Competiciones mensuales ilimitadas</li>
+            <li>Compartir sesiones</li>
+            <li>Máx. 3 entrenos pendientes sin recap</li>
+          </ul>
+          <div class="fine">Pensado para entrenar mucho o trabajar con alumnos.</div>
+        </div>
+
+        <div class="priceCard">
+          <h3>PRO</h3>
+          <div class="price">39€ <small>/ mes</small></div>
+          <ul>
+            <li>1 perro (+5€ / perro extra)</li>
+            <li>Sesiones de entrenamiento ilimitadas</li>
+            <li>Competiciones mensuales ilimitadas</li>
+            <li>Compartir sesiones</li>
+            <li>Máx. 3 entrenos pendientes sin recap</li>
+          </ul>
+          <div class="fine">Para quien compite en serio y quiere archivo a largo plazo.</div>
+        </div>
+      </div>
+
+      <p class="fine" style="margin-top:12px">
+        Nota: “Máx. 3 entrenos sin recap” se refiere a entrenos <b>pendientes a la vez</b> (flujo de trabajo). Ajustable según uso real.
+      </p>
+    </section>
+
+    <!-- WAITLIST -->
+    <section id="waitlist" class="card">
+      <div class="sectionTitle">
+        <h2>Lista de espera</h2>
+        <span>Te avisamos cuando abramos la beta</span>
+      </div>
+
+      <p style="margin:0;color:var(--muted);line-height:1.6">
+        Déjanos tu email y cuéntanos si eres guía, entrenador o club. (Placeholder: luego lo conectamos a un formulario real.)
+      </p>
+
+      <form onsubmit="event.preventDefault(); alert('¡Gracias! Te escribiremos pronto.');"
+            style="margin-top:12px;display:flex;gap:10px;flex-wrap:wrap">
+        <input required type="email" placeholder="tu@email.com"
+               style="flex:1;min-width:220px;padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.18);color:var(--text)">
+        <select style="padding:12px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.18);color:var(--text)">
+          <option>Guía</option>
+          <option>Entrenador</option>
+          <option>Club</option>
+          <option>Otro</option>
+        </select>
+        <button class="btn primary" type="submit" style="cursor:pointer">Apuntarme</button>
+      </form>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="card">
+      <div class="sectionTitle">
+        <h2>FAQ</h2>
+        <span>Respuestas rápidas</span>
+      </div>
+
+      <div style="display:grid;gap:10px">
+        <details>
+          <summary>¿Qué significa “máx. 3 entrenos pendientes sin recap”?</summary>
+          <p>Es un límite de flujo: puedes subir sesiones, pero solo mantener un número reducido pendientes de procesar. Así el sistema se mantiene ágil y se prioriza el informe (recap).</p>
+        </details>
+
+        <details>
+          <summary>¿DogMetrics sustituye a un entrenador?</summary>
+          <p>No. DogMetrics es una capa de objetividad: te muestra datos, patrones y clips para que tú (y tu entrenador) toméis mejores decisiones.</p>
+        </details>
+
+        <details>
+          <summary>¿Para qué sirve el análisis de órdenes?</summary>
+          <p>Para entender el timing real: si la orden llega tarde, si el perro ya tomó una decisión o si hay puntos donde la comunicación se rompe.</p>
+        </details>
+      </div>
+    </section>
+
+    <footer>
+      <div>© <span id="y"></span> DogMetrics</div>
+      <div>Contacto: <span style="color:rgba(255,255,255,.85)">hello@dogmetrics</span> (cámbialo)</div>
+    </footer>
+  </div>
+
+  <script>document.getElementById('y').textContent=new Date().getFullYear();</script>
+</body>
+</html>
