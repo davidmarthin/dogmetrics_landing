@@ -11,6 +11,41 @@ type Plan = {
 
 type SectionId = "top" | "como" | "producto" | "features" | "precios" | "faq" | "waitlist";
 
+type ShowcaseStep = {
+  id: string;
+  title: string;
+  desc: string;
+  img?: string; // ruta en /public, ej: "/screens/timeline.png"
+  pill?: string;
+};
+
+function useActiveStep(ids: string[]) {
+  const [active, setActive] = useState(ids[0] ?? "");
+  useEffect(() => {
+    const els = ids
+      .map((id) => document.getElementById(id))
+      .filter(Boolean) as HTMLElement[];
+
+    if (!els.length) return;
+
+    const io = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => (b.intersectionRatio ?? 0) - (a.intersectionRatio ?? 0))[0];
+        if (visible?.target?.id) setActive(visible.target.id);
+      },
+      { threshold: [0.35, 0.5, 0.65], rootMargin: "-25% 0px -55% 0px" }
+    );
+
+    els.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, [ids.join("|")]);
+
+  return active;
+}
+
+
 function euro(n: number) {
   return `${n}€`;
 }
@@ -161,6 +196,126 @@ function PricingCard({
     </div>
   );
 }
+
+function ScreenshotFrame({
+  title,
+  img
+}: {
+  title: string;
+  img?: string;
+}) {
+  // Si no existe imagen, mostramos placeholder “fake UI”
+  const hasImg = !!img;
+
+  return (
+    <div className="shotFrame" aria-label={title}>
+      <div className="shotTop">
+        <span className="dotMini red" />
+        <span className="dotMini yellow" />
+        <span className="dotMini green" />
+        <span className="shotTitle">{title}</span>
+      </div>
+
+      <div className="shotBody">
+        {hasImg ? (
+          <img className="shotImg" src={img} alt={title} loading="lazy" />
+        ) : (
+          <div className="shotPlaceholder">
+            <div className="phRow">
+              <span className="phChip">attempt_01</span>
+              <span className="phBar" />
+              <span className="phChip teal">marker</span>
+            </div>
+            <div className="phBig" />
+            <div className="phTimeline">
+              <span className="phTick" />
+              <span className="phTick" />
+              <span className="phTick" />
+              <span className="phTick" />
+              <span className="phMarker" />
+              <span className="phRange" />
+            </div>
+          </div>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function Showcase() {
+  const steps: ShowcaseStep[] = [
+    {
+      id: "sc-timeline",
+      title: "Timeline + marcadores",
+      desc: "Navega como en un editor pro: intentos, errores y momentos clave en 1 click.",
+      img: "/screens/timeline.png",
+      pill: "Navegación rápida"
+    },
+    {
+      id: "sc-overlay",
+      title: "Overlay por frame",
+      desc: "Dibuja o escribe encima del vídeo con precisión para explicar una línea, un giro o un timing.",
+      img: "/screens/overlay.png",
+      pill: "Feedback claro"
+    },
+    {
+      id: "sc-compare",
+      title: "Comparación side-by-side",
+      desc: "Sincroniza dos runs o dos momentos para ver diferencias reales, no sensaciones.",
+      img: "/screens/compare.png",
+      pill: "Ver la diferencia"
+    },
+    {
+      id: "sc-recap",
+      title: "Recap + highlights",
+      desc: "Resumen visual y clips cortos para revisar rápido o compartir con tu entrenador.",
+      img: "/screens/recap.png",
+      pill: "Menos tiempo, más valor"
+    }
+  ];
+
+  const activeId = useActiveStep(steps.map((s) => s.id));
+  const activeStep = steps.find((s) => s.id === activeId) ?? steps[0];
+
+  return (
+    <section id="showcase" className="section">
+      <div className="sectionHead" data-reveal>
+        <h2>Así se ve por dentro</h2>
+        <p>Imagen grande mientras haces scroll. Texto corto, rápido.</p>
+      </div>
+
+      <div className="showcase">
+        <div className="showSticky" data-reveal>
+          <div className="showStickyInner">
+            <ScreenshotFrame title={activeStep.title} img={activeStep.img} />
+            <div className="showHint">
+              <span className="pill">{activeStep.pill ?? "DogMetrics"}</span>
+              <span className="muted">Scroll para ver el siguiente.</span>
+            </div>
+          </div>
+        </div>
+
+        <div className="showSteps">
+          {steps.map((s, idx) => (
+            <div key={s.id} id={s.id} className={`showStep ${activeId === s.id ? "on" : ""}`} data-reveal>
+              <div className="showIdx">{String(idx + 1).padStart(2, "0")}</div>
+              <div className="showText">
+                <h3>{s.title}</h3>
+                <p>{s.desc}</p>
+                <div className="showActions">
+                  <a className="btn secondary" href="#precios">Ver planes</a>
+                  <a className="btn primary" href="#waitlist">Quiero acceso</a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+
 
 export default function App() {
   useRevealOnScroll();
@@ -421,6 +576,9 @@ export default function App() {
             </div>
           </div>
         </section>
+
+        <Showcase />
+
 
         {/* FEATURES (bloques cortos para scroll) */}
         <section id="features" className="section">
@@ -999,6 +1157,158 @@ details p{margin:10px 0 0;color:var(--muted);line-height:1.6}
 .is-visible{
   opacity:1;
   transform: translateY(0);
+}
+
+/* Showcase: imagen sticky + texto scroll */
+.showcase{
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  gap:16px;
+}
+
+.showSticky{
+  position: sticky;
+  top: 92px; /* deja sitio para la topbar */
+  align-self:start;
+  height: calc(100vh - 120px);
+  display:flex;
+}
+.showStickyInner{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.showHint{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  padding:10px 12px;
+  border-radius:16px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+}
+
+.showSteps{display:grid;gap:14px}
+
+.showStep{
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius:20px;
+  padding:16px;
+  display:grid;
+  grid-template-columns: 52px 1fr;
+  gap:12px;
+  min-height: 220px; /* importante: crea “scroll beats” */
+  transition: border-color .14s ease, transform .14s ease;
+}
+.showStep:hover{transform: translateY(-2px); border-color: rgba(28,198,184,.22)}
+.showStep.on{border-color: rgba(28,198,184,.28); box-shadow: 0 0 0 2px rgba(28,198,184,.12) inset}
+
+.showIdx{
+  font-weight:900;
+  color: rgba(255,255,255,.65);
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(0,0,0,.18);
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:52px;
+}
+
+.showText h3{margin:0;font-size:18px}
+.showText p{margin:8px 0 0;color:var(--muted);line-height:1.65}
+.showActions{margin-top:12px;display:flex;gap:10px;flex-wrap:wrap}
+
+/* “Screenshot frame” */
+.shotFrame{
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  border-radius:22px;
+  overflow:hidden;
+  height: 100%;
+  min-height: 460px;
+  display:flex;
+  flex-direction:column;
+}
+.shotTop{
+  display:flex;align-items:center;gap:8px;
+  padding:10px 12px;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  background: rgba(255,255,255,.03);
+}
+.shotTitle{margin-left:6px;color:var(--muted);font-size:12px}
+.shotBody{padding:12px;flex:1;display:flex}
+
+.shotImg{
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+}
+
+/* Placeholder bonito */
+.shotPlaceholder{
+  width:100%;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background:
+    radial-gradient(closest-side at 25% 30%, rgba(28,198,184,.18), transparent 60%),
+    radial-gradient(closest-side at 80% 70%, rgba(255,138,60,.14), transparent 60%),
+    rgba(0,0,0,.25);
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+}
+.phRow{display:flex;gap:10px;align-items:center}
+.phChip{
+  font-size:11px;padding:6px 10px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  color: var(--muted);
+}
+.phChip.teal{border-color: rgba(28,198,184,.25); background: rgba(28,198,184,.10); color: rgba(255,255,255,.86)}
+.phBar{height:10px;flex:1;border-radius:999px;background: linear-gradient(90deg, rgba(27,60,104,.2), rgba(28,198,184,.25), rgba(255,138,60,.18))}
+.phBig{
+  flex:1;
+  min-height: 260px;
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,.10);
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+}
+.phTimeline{
+  height:36px;border-radius:14px;border:1px solid rgba(255,255,255,.10);
+  background: rgba(255,255,255,.03);
+  position:relative;
+  overflow:hidden;
+}
+.phTick{position:absolute;top:8px;bottom:8px;width:1px;background:rgba(255,255,255,.10)}
+.phTick:nth-child(1){left:16%}
+.phTick:nth-child(2){left:33%}
+.phTick:nth-child(3){left:66%}
+.phTick:nth-child(4){left:83%}
+.phMarker{
+  position:absolute;top:8px;bottom:8px;width:6px;border-radius:999px;
+  left:58%;
+  background: rgba(28,198,184,.95);
+  box-shadow: 0 0 0 6px rgba(28,198,184,.12);
+}
+.phRange{
+  position:absolute;top:10px;bottom:10px;border-radius:999px;
+  left:62%;right:10%;
+  background: rgba(255,138,60,.20);
+  border: 1px solid rgba(255,138,60,.22);
+}
+
+@media (max-width: 980px){
+  .showcase{grid-template-columns:1fr}
+  .showSticky{position:relative;top:auto;height:auto}
+  .shotFrame{min-height: 360px}
 }
 
 @media (max-width:980px){
