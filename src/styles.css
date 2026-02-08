@@ -1,10 +1,10 @@
 :root{
   --bg: #0b0f14;
-  --panel: rgba(255,255,255,0.06);
+  --panel: rgba(255,255,255,0.07);
   --panel2: rgba(255,255,255,0.09);
   --text: rgba(255,255,255,0.92);
   --muted: rgba(255,255,255,0.70);
-  --border: rgba(255,255,255,0.14);
+  --border: rgba(255,255,255,0.18);
   --bg-alt: rgba(255,255,255,0.04);
 
   --accent: #22c1c3; /* cámbialo por tu teal exacto */
@@ -86,7 +86,7 @@ img { max-width: 100%; display: block; }
   text-decoration:none;
   border: 1px solid var(--border);
 }
-.btnPrimary { background: #111; color: #fff; border-color: #111; }
+
 .btnGhost { background: transparent; color: #111; }
 
 .cardGrid {
@@ -161,3 +161,36 @@ img { max-width: 100%; display: block; }
   border: 1px solid var(--border);
   background: var(--panel);
 }
+
+.kicker {
+  color: var(--muted);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  opacity: 1;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.kicker::before{
+  content:"";
+  width:10px;
+  height:10px;
+  border-radius:999px;
+  background: var(--accent);
+  display:inline-block;
+}
+
+.card, .mediaCard {
+  transition: transform 140ms ease, border-color 140ms ease, background 140ms ease;
+}
+
+.card:hover, .mediaCard:hover {
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.28);
+  background: rgba(255,255,255,0.085);
+}
+
+.card b { color: var(--text); }
+.card { color: var(--muted); }
