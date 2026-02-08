@@ -113,6 +113,58 @@ export default function App() {
           </div>
         </div>
       </section>
+      <section className="sectionAlt">
+        <div className="container stack">
+          <div className="kicker">Plans</div>
+          <h2 className="h2">Start with a pilot</h2>
+          <p className="lead">
+            We’re onboarding early access users. Pick the track that fits you — we’ll help you set it up.
+          </p>
+
+          <div className="cardGrid">
+            <div className="card cardFeatured">
+              <b>Pilot (Clubs & Coaches)</b>
+              <div style={{ marginTop: 8, color: "var(--muted)" }}>
+                Best for clubs running regular training sessions and coaches who review multiple teams.
+                </div>
+                <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7 }}>
+                <li>Onboarding call + setup guidance</li>
+                <li>Timeline + highlights workflow</li>
+                <li>Coach annotations & sharing</li>
+              </ul>
+            </div>
+
+            <div className="card">
+              <b>Solo (Handlers)</b>
+              <div style={{ marginTop: 8, color: "var(--muted)" }}>
+                For individual handlers who want faster review and progress tracking.
+              </div>
+              <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7 }}>
+                <li>Upload sessions and review attempts</li>
+                <li>Highlights + recap sharing</li>
+                <li>Personal library (coming soon)</li>
+              </ul>
+            </div>
+
+            <div className="card">
+              <b>Club (Multi-coach)</b>
+              <div style={{ marginTop: 8, color: "var(--muted)" }}>
+                A shared space for clubs: multiple coaches, multiple teams, and shared datasets.
+                </div>
+                <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7 }}>
+                <li>Multiple coach accounts</li>
+                <li>Shared session library</li>
+                <li>Club workflows (in pilot)</li>
+              </ul>
+            </div>
+          </div>
+
+          <div className="btnRow" style={{ marginTop: 6 }}>
+            <a className="btn btnPrimary" href="#request-demo">Request access</a>
+            <span className="small">No public pricing yet — pilots are tailored to your setup.</span>
+          </div>
+        </div>
+      </section>
 
       <section id="request-demo" className="sectionAlt">
         <div className="container grid2">

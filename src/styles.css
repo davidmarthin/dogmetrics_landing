@@ -194,3 +194,8 @@ img { max-width: 100%; display: block; }
 
 .card b { color: var(--text); }
 .card { color: var(--muted); }
+
+.cardFeatured {
+  border-color: color-mix(in srgb, var(--accent) 55%, var(--border));
+  box-shadow: 0 0 0 1px rgba(0,0,0,0); /* placeholder */
+}
