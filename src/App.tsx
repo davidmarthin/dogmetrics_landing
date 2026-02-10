@@ -1,5 +1,22 @@
 import { useEffect, useState } from "react";
 
+const waitingListSubject = encodeURIComponent("DogMetrics — Waiting list");
+const waitingListBody = encodeURIComponent(`Hi DogMetrics team,
+
+I’d like to join the waiting list.
+
+Name:
+Role (handler / coach / club):
+Club (optional):
+Country / city:
+Typical session length:
+Use case (training / competition / both):
+Interested in DMCam? (yes/no):
+Anything else we should know:
+
+Thanks!`);
+const waitingListHref = `mailto:demo@dog-metrics.com?subject=${waitingListSubject}&body=${waitingListBody}`;
+
 export default function App() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
 
@@ -11,22 +28,27 @@ export default function App() {
     return () => window.removeEventListener("keydown", onKeyDown);
   }, [lightboxSrc]);
 
-
   return (
     <div>
       <header className="section">
         <div className="container grid2">
           <div className="stack">
             <div className="kicker">Dog agility video analysis</div>
-            <h1 className="h1">Turn agility videos into a training timeline — automatically.</h1>
+            <h1 className="h1">Turn long agility sessions into a structured review workflow.</h1>
             <p className="lead">
-              Upload a session and get attempts, highlights, and coach annotations in minutes.
-              Built for clubs, coaches, and handlers.
+              DogMetrics helps you review attempts, tag key events, generate a recap, and export
+              highlight videos — so you spend less time scrubbing and more time training.
             </p>
 
             <div className="btnRow">
-              <a className="btn btnPrimary" href="#request-demo">Request demo</a>
+              <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
               <a className="btn s" href="#how-it-works">How it works</a>
+            </div>
+            <div className="small">
+              Early access is limited. Join the waiting list and we’ll contact you when spots open.
+            </div>
+            <div className="small">
+              By contacting us you agree we’ll use your details to reply. See the Privacy Policy.
             </div>
 
             <div className="cardGrid" style={{ marginTop: 8 }}>
@@ -67,6 +89,24 @@ export default function App() {
             <div className="card"><b>1) Record</b><br />Use DMCam or your current camera setup.</div>
             <div className="card"><b>2) Upload</b><br />Send sessions to DogMetrics Cloud.</div>
             <div className="card"><b>3) Review</b><br />Timeline, highlights, and annotations.</div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container stack">
+          <div className="kicker">Early access includes</div>
+          <h2 className="h2">What you get in the waiting list rollout</h2>
+
+          <div className="card">
+            <ul style={{ margin: 0, paddingLeft: 20, color: "var(--muted)", lineHeight: 1.8 }}>
+              <li>Early access to DogMetrics Cloud (web-based session review and recap workflow)</li>
+              <li>Priority support during setup (we’ll help you get your first sessions in)</li>
+              <li>A private feedback channel to influence features and workflow</li>
+              <li>Access to new exports first (recap + social highlights improvements)</li>
+              <li>Preferential pricing when plans launch (locked-in early adopter offer)</li>
+              <li>Optional DMCam interest list for field recording trials (limited availability)</li>
+            </ul>
           </div>
         </div>
       </section>
@@ -160,7 +200,7 @@ export default function App() {
           </div>
 
           <div className="btnRow" style={{ marginTop: 6 }}>
-            <a className="btn btnPrimary" href="#request-demo">Request access</a>
+            <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
             <span className="small">No public pricing yet — pilots are tailored to your setup.</span>
           </div>
         </div>
@@ -169,46 +209,20 @@ export default function App() {
       <section id="request-demo" className="sectionAlt">
         <div className="container grid2">
           <div className="stack">
-            <div className="kicker">Request access</div>
-            <h2 className="h2">Get a demo and join the pilot</h2>
+            <div className="kicker">Waiting list</div>
+            <h2 className="h2">Join the waiting list</h2>
             <p className="lead">
-              Tell us a bit about your training setup. We’ll reply within 48 hours.
+              Tell us about your sessions and goals — we’ll contact you when spots open.
             </p>
-          </div>
-
-          <div className="card">
-            <form
-              onSubmit={(e) => {
-                e.preventDefault();
-                const fd = new FormData(e.currentTarget as HTMLFormElement);
-                const name = String(fd.get("name") || "");
-                const email = String(fd.get("email") || "");
-                const role = String(fd.get("role") || "");
-                const msg = String(fd.get("message") || "");
-                const subject = encodeURIComponent("DogMetrics — Demo request");
-                const body = encodeURIComponent(
-                  `Name: ${name}\nEmail: ${email}\nRole: ${role}\n\nMessage:\n${msg}`
-                );
-                window.location.href = `mailto:demo@dog-metrics.com?subject=${subject}&body=${body}`;
-              }}
-            >
-              <div className="stack" style={{ gap: 12 }}>
-                <input className="formInput" name="name" placeholder="Name" required />
-                <input className="formInput" name="email" placeholder="Email" type="email" required />
-                <select className="formInput" name="role" required defaultValue="">
-                  <option value="" disabled>I’m a…</option>
-                  <option>Coach</option>
-                  <option>Club</option>
-                  <option>Handler</option>
-                  <option>Other</option>
-                </select>
-                <textarea className="formInput" name="message" placeholder="Message (optional)" rows={4} />
-                <button className="btn btnPrimary" type="submit">Send</button>
-                <div className="small">
-                  By contacting us you agree we’ll use your details to reply. See the Privacy Policy.
-                </div>
-              </div>
-            </form>
+            <div className="btnRow">
+              <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
+            </div>
+            <div className="small">
+              Early access is limited. Join the waiting list and we’ll contact you when spots open.
+            </div>
+            <div className="small">
+              By contacting us you agree we’ll use your details to reply. See the Privacy Policy.
+            </div>
           </div>
         </div>
       </section>
@@ -239,7 +253,7 @@ export default function App() {
           <div className="small">© {new Date().getFullYear()} DogMetrics</div>
             <div className="footerLinks">
               <a href="/privacy.html">Privacy Policy</a>
-              <a href="#request-demo">Request demo</a>
+              <a href={waitingListHref}>Join the waiting list</a>
             </div>
         </div>
       </footer>
