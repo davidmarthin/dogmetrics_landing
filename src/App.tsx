@@ -155,53 +155,56 @@ export default function App() {
       </section>
       <section className="sectionAlt">
         <div className="container stack">
-          <div className="kicker">Plans</div>
-          <h2 className="h2">Start with a pilot</h2>
+          <div className="kicker">Early access</div>
+          <h2 className="h2">Choose your track</h2>
           <p className="lead">
-            We’re onboarding early access users. Pick the track that fits you — we’ll help you set it up.
+            DogMetrics is in early access. Join the waiting list and tell us which track fits your setup — we’ll follow up
+            when spots open.
           </p>
 
           <div className="cardGrid">
             <div className="card cardFeatured">
-              <b>Pilot (Clubs & Coaches)</b>
+              <b>Solo (Handler)</b>
               <div style={{ marginTop: 8, color: "var(--muted)" }}>
-                Best for clubs running regular training sessions and coaches who review multiple teams.
-                </div>
-                <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7 }}>
-                <li>Onboarding call + setup guidance</li>
-                <li>Timeline + highlights workflow</li>
-                <li>Coach annotations & sharing</li>
+                For individual handlers who want a faster, more consistent way to review training sessions and track progress.
+              </div>
+              <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7 }}>
+                <li>Upload sessions and review attempts</li>
+                <li>Tag key events inside each attempt</li>
+                <li>Generate a recap and export highlights for social</li>
               </ul>
             </div>
 
             <div className="card">
-              <b>Solo (Handlers)</b>
+              <b>Coach (Reviews)</b>
               <div style={{ marginTop: 8, color: "var(--muted)" }}>
-                For individual handlers who want faster review and progress tracking.
+                For coaches who review multiple teams and want a clear feedback workflow — comments, drawings, and sharing.
               </div>
               <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7 }}>
-                <li>Upload sessions and review attempts</li>
-                <li>Highlights + recap sharing</li>
-                <li>Personal library (coming soon)</li>
+                <li>Share recaps with comments and frame drawing</li>
+                 <li>Compare runs and keep feedback organised</li>
+                <li>Structured review workflow across athletes</li>
               </ul>
             </div>
 
             <div className="card">
               <b>Club (Multi-coach)</b>
               <div style={{ marginTop: 8, color: "var(--muted)" }}>
-                A shared space for clubs: multiple coaches, multiple teams, and shared datasets.
-                </div>
-                <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7 }}>
-                <li>Multiple coach accounts</li>
-                <li>Shared session library</li>
-                <li>Club workflows (in pilot)</li>
+                For clubs that want a shared space for multiple coaches, multiple teams, and a consistent way to review sessions.
+              </div>
+              <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7 }}>
+                <li>Multiple coach accounts and shared access</li>
+                <li>Shared session library across teams</li>
+                <li>Club workflows (early access, limited)</li>
               </ul>
             </div>
           </div>
 
           <div className="btnRow" style={{ marginTop: 6 }}>
             <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
-            <span className="small">No public pricing yet — pilots are tailored to your setup.</span>
+            <span className="small">
+              No public pricing yet — early access is limited and tailored to your setup.
+            </span>
           </div>
         </div>
       </section>
@@ -214,11 +217,13 @@ export default function App() {
             <p className="lead">
               Tell us about your sessions and goals — we’ll contact you when spots open.
             </p>
+
             <div className="btnRow">
               <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
             </div>
+
             <div className="small">
-              Early access is limited. Join the waiting list and we’ll contact you when spots open.
+              What happens next: we’ll reply with a short intake and propose next steps (cloud access, and optional DMCam interest).
             </div>
             <div className="small">
               By contacting us you agree we’ll use your details to reply. See the Privacy Policy.
