@@ -132,7 +132,7 @@ img { max-width: 100%; display: block; }
   gap: 16px;
   flex-wrap: wrap;
   align-items: center;
-  color: rgba(0,0,0,0.75);
+  color: var(--muted);
   font-size: 14px;
 }
 .footerLinks { display:flex; gap: 14px; flex-wrap: wrap; }
