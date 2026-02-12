@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const waitingListSubject = encodeURIComponent("DogMetrics — Waiting list");
 const waitingListBody = encodeURIComponent(`Hi DogMetrics team,
@@ -17,8 +17,179 @@ Anything else we should know:
 Thanks!`);
 const waitingListHref = `mailto:demo@dog-metrics.com?subject=${waitingListSubject}&body=${waitingListBody}`;
 
+function DemoVideoModal({
+  open,
+  onClose,
+  src,
+  title = "DogMetrics Demo",
+}: {
+  open: boolean;
+  onClose: () => void;
+  src: string;
+  title?: string;
+}) {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  // ESC para cerrar + bloquear scroll
+  useEffect(() => {
+    if (!open) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    window.addEventListener("keydown", onKeyDown);
+
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    // Autoplay al abrir (sin forzar: si falla por políticas, ok)
+    setTimeout(() => {
+      try {
+        videoRef.current?.play();
+      } catch {}
+    }, 0);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [open, onClose]);
+
+  // Pausar al cerrar
+  useEffect(() => {
+    if (!open) {
+      videoRef.current?.pause();
+      if (videoRef.current) videoRef.current.currentTime = 0;
+    }
+  }, [open]);
+
+  if (!open) return null;
+
+  return (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={title}
+      onMouseDown={(e) => {
+        // click en backdrop cierra, click dentro no
+        if (e.target === e.currentTarget) onClose();
+      }}
+      style={{
+        position: "fixed",
+        inset: 0,
+        background: "rgba(0,0,0,0.65)",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        padding: 16,
+        zIndex: 1000,
+      }}
+    >
+      <div
+        style={{
+          width: "min(980px, 100%)",
+          background: "rgba(20,20,24,0.98)",
+          border: "1px solid rgba(255,255,255,0.12)",
+          borderRadius: 16,
+          overflow: "hidden",
+          boxShadow: "0 20px 60px rgba(0,0,0,0.5)",
+        }}
+      >
+        <div
+          style={{
+            display: "flex",
+            gap: 12,
+            alignItems: "center",
+            justifyContent: "space-between",
+            padding: "12px 14px",
+            borderBottom: "1px solid rgba(255,255,255,0.10)",
+          }}
+        >
+          <div style={{ color: "rgba(255,255,255,0.92)", fontWeight: 600 }}>
+            {title}
+          </div>
+          <button
+            onClick={onClose}
+            aria-label="Close"
+            style={{
+              background: "transparent",
+              color: "rgba(255,255,255,0.75)",
+              border: "1px solid rgba(255,255,255,0.15)",
+              borderRadius: 10,
+              padding: "6px 10px",
+              cursor: "pointer",
+            }}
+          >
+            ✕
+          </button>
+        </div>
+
+        <div style={{ padding: 14 }}>
+          <div
+            style={{
+              borderRadius: 12,
+              overflow: "hidden",
+              background: "black",
+            }}
+          >
+            <video
+              ref={videoRef}
+              controls
+              playsInline
+              preload="metadata"
+              style={{ width: "100%", height: "auto", display: "block" }}
+            >
+              <source src={src} type="video/mp4" />
+            </video>
+          </div>
+
+          <div
+            style={{
+              display: "flex",
+              gap: 10,
+              justifyContent: "flex-end",
+              marginTop: 12,
+            }}
+          >
+            <a
+              href={src}
+              target="_blank"
+              rel="noreferrer"
+              style={{
+                color: "rgba(255,255,255,0.80)",
+                textDecoration: "none",
+                border: "1px solid rgba(255,255,255,0.15)",
+                borderRadius: 10,
+                padding: "8px 10px",
+              }}
+            >
+              Open in new tab
+            </a>
+            <button
+              onClick={onClose}
+              style={{
+                background: "rgba(255,255,255,0.10)",
+                color: "rgba(255,255,255,0.92)",
+                border: "1px solid rgba(255,255,255,0.12)",
+                borderRadius: 10,
+                padding: "8px 12px",
+                cursor: "pointer",
+              }}
+            >
+              Done
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+
+ 
 export default function App() {
   const [lightboxSrc, setLightboxSrc] = useState<string | null>(null);
+  const [demoOpen, setDemoOpen] = useState(false);
 
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
@@ -43,6 +214,26 @@ export default function App() {
             <div className="btnRow">
               <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
               <a className="btn s" href="#how-it-works">How it works</a>
+              <button
+               onClick={() => setDemoOpen(true)}
+               style={{
+                 borderRadius: 999,
+                 padding: "10px 14px",
+                 border: "1px solid rgba(255,255,255,0.18)",
+                 background: "rgba(255,255,255,0.08)",
+                 color: "rgba(255,255,255,0.92)",
+                 cursor: "pointer",
+               }}
+             >
+               ▶ Watch Demo
+             </button>
+
+             <DemoVideoModal
+               open={demoOpen}
+               onClose={() => setDemoOpen(false)}
+               src="/video/demo_v03.mp4"
+               title="DogMetrics — 90s demo"
+             />
             </div>
             <div className="small">
               Early access is limited. Join the waiting list and we’ll contact you when spots open.
