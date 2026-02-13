@@ -187,7 +187,7 @@ function DemoVideoModal({
 }
 
 function WatchDemoButton({ onClick }: { onClick: () => void }) {
-  const [hover, setHover] = React.useState(false);
+  const [hover, setHover] = useState(false);
 
   return (
     <button
@@ -197,15 +197,20 @@ function WatchDemoButton({ onClick }: { onClick: () => void }) {
       style={{
         borderRadius: 999,
         padding: "10px 14px",
-        border: `1px solid ${hover ? "rgba(255,255,255,0.22)" : "rgba(255,255,255,0.14)"}`,
+        border: `1px solid ${
+          hover ? "rgba(255,255,255,0.22)" : "rgba(255,255,255,0.14)"
+        }`,
         background: ORANGE,
         color: "rgba(10,10,12,0.95)",
         cursor: "pointer",
         fontWeight: 700,
         letterSpacing: "0.2px",
-        boxShadow: hover ? "0 10px 24px rgba(0,0,0,0.30)" : "0 8px 18px rgba(0,0,0,0.22)",
+        boxShadow: hover
+          ? "0 10px 24px rgba(0,0,0,0.30)"
+          : "0 8px 18px rgba(0,0,0,0.22)",
         transform: hover ? "translateY(-1px)" : "translateY(0)",
-        transition: "transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease",
+        transition:
+          "transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease",
       }}
     >
       ▶ Watch Demo
