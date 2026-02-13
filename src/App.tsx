@@ -310,6 +310,7 @@ export default function App() {
                 alt="Record a training session with a fixed camera"
                 loading="lazy"
                 decoding="async"
+                onClick={() => setLightboxSrc("/screens/how-record.png")}
               />
             </div>
 
@@ -325,6 +326,7 @@ export default function App() {
                 alt="Upload your session to DogMetrics Cloud"
                 loading="lazy"
                 decoding="async"
+                onClick={() => setLightboxSrc("/screens/how-upload.png")}
               />
             </div>
 
@@ -340,6 +342,7 @@ export default function App() {
                 alt="Review timeline, highlights, and annotations"
                 loading="lazy"
                 decoding="async"
+                onClick={() => setLightboxSrc("/screens/how-review.png")}
               />
             </div>
           </div>
