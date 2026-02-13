@@ -582,10 +582,7 @@ export default function App() {
             <div className="footerLinks">
               <a href="/privacy.html">Privacy Policy</a>
               <a
-                className="btn btnPrimary"
                 href={betaApplyUrl}
-                target="_blank"
-                rel="noreferrer"
               >
                 Apply for April Beta
               </a>
