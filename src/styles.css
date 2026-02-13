@@ -216,3 +216,9 @@ img { max-width: 100%; display: block; }
   aspect-ratio: 16 / 9;
   object-fit: cover;
 }
+
+.price {
+  font-weight: 800;
+  letter-spacing: 0.2px;
+  color: rgba(255,255,255,0.92);
+}

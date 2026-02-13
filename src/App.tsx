@@ -17,6 +17,8 @@ Anything else we should know:
 Thanks!`);
 const waitingListHref = `mailto:demo@dog-metrics.com?subject=${waitingListSubject}&body=${waitingListBody}`;
 const ORANGE = "#FF8A3C";
+const betaApplyUrl =
+  "https://docs.google.com/forms/d/e/1FAIpQLSd7APWCUl56ZMllHzS8pYb7ytD3fessC8VxJLB8Pw6fr4Oszw/viewform?usp=header";
 
 function DemoVideoModal({
   open,
@@ -244,8 +246,15 @@ export default function App() {
             </p>
 
             <div className="btnRow">
-              <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
-              <a className="btn s" href="#how-it-works">How it works</a>
+              <a
+                className="btn btnPrimary"
+                href={betaApplyUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Apply for April Beta
+              </a>
+             <a className="btn s" href="#how-it-works">How it works</a>
 
              <WatchDemoButton onClick={() => setDemoOpen(true)} />
 
@@ -457,30 +466,88 @@ export default function App() {
           </div>
 
           <div className="btnRow" style={{ marginTop: 6 }}>
-            <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
-            <span className="small">
-              No public pricing yet — early access is limited and tailored to your setup.
+            <a
+              className="btn btnPrimary"
+              href={betaApplyUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Apply for April Beta
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="sectionAlt">
+        <div className="container stack">
+          <div className="kicker">Pricing</div>
+          <h2 className="h2">Soft launch plans (Jun–Aug)</h2>
+          <p className="lead">
+            We’re currently recruiting <b>April beta testers</b>. Soft launch pricing starts in June with clear weekly quotas.
+          </p>
+
+          <div className="cardGrid">
+            <div className="card">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
+                <b>Starter</b>
+                <span className="price">Free</span>
+              </div>
+              <div style={{ marginTop: 8, color: "var(--muted)" }}>
+                For weekly training review with a simple quota.
+              </div>
+
+              <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7, paddingLeft: 18 }}>
+                <li><b>1 session / week</b></li>
+                <li>Max <b>12 minutes</b> per session</li>
+                <li>Recap workflow + review tools</li>
+                <li><span style={{ opacity: 0.9 }}>RAW is input-only and removed after recap generation</span></li>
+              </ul>
+            </div>
+  
+            <div className="card cardFeatured">
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
+                <b>Early Supporter</b>
+                <span className="price">€10 / month</span>
+              </div>
+              <div style={{ marginTop: 8, color: "var(--muted)" }}>
+                Help fund compute/storage and get higher weekly limits.
+              </div>
+
+              <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7, paddingLeft: 18 }}>
+                <li><b>2 sessions / week</b></li>
+                <li>Max <b>12 minutes</b> per session</li>
+                <li>Priority onboarding & feedback channel</li>
+                <li><b>Price locked for 12 months</b> (early adopters)</li>
+              </ul>
+
+              <div style={{ marginTop: 14 }} className="small">
+                Planned standard price later: <b>€15 / month</b>.
+              </div>
+            </div>
+          </div>
+
+          <div className="btnRow" style={{ marginTop: 8 }}>
+            <a
+              className="btn btnPrimary"
+              href={betaApplyUrl}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Apply for April Beta
+            </a>
+
+            <span className="small" style={{ alignSelf: "center" }}>
+              Beta spots are limited — we’ll reply with next steps.
             </span>
           </div>
         </div>
       </section>
 
+                
       <section id="request-demo" className="sectionAlt">
         <div className="container grid2">
           <div className="stack">
             <div className="kicker">Waiting list</div>
-            <h2 className="h2">Join the waiting list</h2>
-            <p className="lead">
-              Tell us about your sessions and goals — we’ll contact you when spots open.
-            </p>
-
-            <div className="btnRow">
-              <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
-            </div>
-
-            <div className="small">
-              What happens next: we’ll reply with a short intake and propose next steps (cloud access, and optional DMCam interest).
-            </div>
             <div className="small">
               By contacting us you agree we’ll use your details to reply. See the Privacy Policy.
             </div>
@@ -514,7 +581,14 @@ export default function App() {
           <div className="small">© {new Date().getFullYear()} DogMetrics</div>
             <div className="footerLinks">
               <a href="/privacy.html">Privacy Policy</a>
-              <a href={waitingListHref}>Join the waiting list</a>
+              <a
+                className="btn btnPrimary"
+                href={betaApplyUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                Apply for April Beta
+              </a>
             </div>
         </div>
       </footer>
