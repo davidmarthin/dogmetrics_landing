@@ -16,6 +16,7 @@ Anything else we should know:
 
 Thanks!`);
 const waitingListHref = `mailto:demo@dog-metrics.com?subject=${waitingListSubject}&body=${waitingListBody}`;
+const ORANGE = "#FF8A3C";
 
 function DemoVideoModal({
   open,
@@ -185,6 +186,32 @@ function DemoVideoModal({
   );
 }
 
+function WatchDemoButton({ onClick }: { onClick: () => void }) {
+  const [hover, setHover] = React.useState(false);
+
+  return (
+    <button
+      onClick={onClick}
+      onMouseEnter={() => setHover(true)}
+      onMouseLeave={() => setHover(false)}
+      style={{
+        borderRadius: 999,
+        padding: "10px 14px",
+        border: `1px solid ${hover ? "rgba(255,255,255,0.22)" : "rgba(255,255,255,0.14)"}`,
+        background: ORANGE,
+        color: "rgba(10,10,12,0.95)",
+        cursor: "pointer",
+        fontWeight: 700,
+        letterSpacing: "0.2px",
+        boxShadow: hover ? "0 10px 24px rgba(0,0,0,0.30)" : "0 8px 18px rgba(0,0,0,0.22)",
+        transform: hover ? "translateY(-1px)" : "translateY(0)",
+        transition: "transform 120ms ease, box-shadow 120ms ease, border-color 120ms ease",
+      }}
+    >
+      ▶ Watch Demo
+    </button>
+  );
+}
 
  
 export default function App() {
@@ -214,19 +241,8 @@ export default function App() {
             <div className="btnRow">
               <a className="btn btnPrimary" href={waitingListHref}>Join the waiting list</a>
               <a className="btn s" href="#how-it-works">How it works</a>
-              <button
-               onClick={() => setDemoOpen(true)}
-               style={{
-                 borderRadius: 999,
-                 padding: "10px 14px",
-                 border: "1px solid rgba(255,255,255,0.18)",
-                 background: "rgba(255,255,255,0.08)",
-                 color: "rgba(255,255,255,0.92)",
-                 cursor: "pointer",
-               }}
-             >
-               ▶ Watch Demo
-             </button>
+
+             <WatchDemoButton onClick={() => setDemoOpen(true)} />
 
              <DemoVideoModal
                open={demoOpen}
@@ -277,9 +293,50 @@ export default function App() {
           <h2 className="h2">From camera to insights</h2>
 
           <div className="cardGrid">
-            <div className="card"><b>1) Record</b><br />Use DMCam or your current camera setup.</div>
-            <div className="card"><b>2) Upload</b><br />Send sessions to DogMetrics Cloud.</div>
-            <div className="card"><b>3) Review</b><br />Timeline, highlights, and annotations.</div>
+            <div className="card">
+              <div>
+                <b>1) Record</b><br />
+                Use DMCam or your current camera setup.
+              </div>
+
+              <img
+                className="cardImg"
+                src="/screens/how-record.png"
+                alt="Record a training session with a fixed camera"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="card">
+              <div>
+                <b>2) Upload</b><br />
+                Send sessions to DogMetrics Cloud.
+              </div>
+
+              <img
+                className="cardImg"
+                src="/screens/how-upload.png"
+                alt="Upload your session to DogMetrics Cloud"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+
+            <div className="card">
+              <div>
+                <b>3) Review</b><br />
+                Timeline, highlights, and annotations.
+              </div>
+
+              <img
+                className="cardImg"
+                src="/screens/how-review.png"
+                alt="Review timeline, highlights, and annotations"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
       </section>
