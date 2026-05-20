@@ -480,49 +480,35 @@ export default function App() {
       <section id="pricing" className="sectionAlt">
         <div className="container stack">
           <div className="kicker">Pricing</div>
-          <h2 className="h2">Soft launch plans (Jun–Aug)</h2>
+          <h2 className="h2">Private pilot pricing</h2>
           <p className="lead">
-            We’re currently recruiting <b>private pilot testers</b>. Soft launch pricing starts in June with clear weekly quotas.
+            We’re opening a small private pilot for agility handlers and coaches. Pricing is provisional and designed to validate real training workflows.
           </p>
 
           <div className="cardGrid">
             <div className="card">
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
-                <b>Starter</b>
-                <span className="price">Free</span>
+                <b>Handler Pilot</b>
+                <span className="price">€15 / month</span>
               </div>
               <div style={{ marginTop: 8, color: "var(--muted)" }}>
-                For weekly training review with a simple quota.
+                For individual handlers who want to review training videos, tag attempts, generate recaps, and track progress.
               </div>
-
-              <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7, paddingLeft: 18 }}>
-                <li><b>1 session / week</b></li>
-                <li>Max <b>12 minutes</b> per session</li>
-                <li>Recap workflow + review tools</li>
-                <li><span style={{ opacity: 0.9 }}>RAW is input-only and removed after recap generation</span></li>
-              </ul>
             </div>
   
             <div className="card cardFeatured">
               <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: 12 }}>
-                <b>Early Supporter</b>
-                <span className="price">€10 / month</span>
+                <b>Coach Pilot</b>
+                <span className="price">€25 / month</span>
               </div>
               <div style={{ marginTop: 8, color: "var(--muted)" }}>
-                Help fund compute/storage and get higher weekly limits.
-              </div>
-
-              <ul style={{ marginTop: 12, marginBottom: 0, color: "var(--muted)", lineHeight: 1.7, paddingLeft: 18 }}>
-                <li><b>2 sessions / week</b></li>
-                <li>Max <b>12 minutes</b> per session</li>
-                <li>Priority onboarding & feedback channel</li>
-                <li><b>Price locked for 12 months</b> (early adopters)</li>
-              </ul>
-
-              <div style={{ marginTop: 14 }} className="small">
-                Planned standard price later: <b>€15 / month</b>.
+                For coaches who want to give more structured feedback and test the workflow with real students.
               </div>
             </div>
+          </div>
+
+          <div className="small">
+            Founding testers: limited early access. Some close testers may try 1–2 sessions before deciding.
           </div>
 
           <div className="btnRow" style={{ marginTop: 8 }}>
