@@ -533,6 +533,21 @@ export default function App() {
         <div className="container grid2">
           <div className="stack">
             <div className="kicker">Private pilot</div>
+            <h2 className="h2">Want to test DogMetrics with real agility training videos?</h2>
+            <p className="lead">
+              We’re inviting a small group of handlers and coaches to test the workflow and give direct feedback.
+            </p>
+            <div className="row" style={{ marginTop: 12 }}>
+              <a
+                className="btn btnPrimary"
+                href={betaApplyUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Apply for Private Pilot"
+              >
+                Apply for Private Pilot
+              </a>
+            </div>
             <div className="small">
               By contacting us you agree we’ll use your details to reply. See the Privacy Policy.
             </div>
