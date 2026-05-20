@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
-const waitingListSubject = encodeURIComponent("DogMetrics — Waiting list");
+const waitingListSubject = encodeURIComponent("DogMetrics — Private Pilot");
 const waitingListBody = encodeURIComponent(`Hi DogMetrics team,
 
-I’d like to join the waiting list.
+I’d like to apply for the DogMetrics Private Pilot.
 
 Name:
 Role (handler / coach / club):
@@ -252,7 +252,7 @@ export default function App() {
                 target="_blank"
                 rel="noreferrer"
               >
-                Apply for April Beta
+                Apply for Private Pilot
               </a>
              <a className="btn s" href="#how-it-works">How it works</a>
 
@@ -266,7 +266,7 @@ export default function App() {
              />
             </div>
             <div className="small">
-              Early access is limited. Join the waiting list and we’ll contact you when spots open.
+              Early access is limited. Apply for the private pilot and we’ll contact you when spots open.
             </div>
             <div className="small">
               By contacting us you agree we’ll use your details to reply. See the Privacy Policy.
@@ -361,7 +361,7 @@ export default function App() {
       <section className="section">
         <div className="container stack">
           <div className="kicker">Early access includes</div>
-          <h2 className="h2">What you get in the waiting list rollout</h2>
+          <h2 className="h2">What you get in the private pilot rollout</h2>
 
           <div className="card">
             <ul style={{ margin: 0, paddingLeft: 20, color: "var(--muted)", lineHeight: 1.8 }}>
@@ -423,7 +423,7 @@ export default function App() {
           <div className="kicker">Early access</div>
           <h2 className="h2">Choose your track</h2>
           <p className="lead">
-            DogMetrics is in early access. Join the waiting list and tell us which track fits your setup — we’ll follow up
+            DogMetrics is in early access. Apply for the private pilot and tell us which track fits your setup — we’ll follow up
             when spots open.
           </p>
 
@@ -472,7 +472,7 @@ export default function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Apply for April Beta
+              Apply for Private Pilot
             </a>
           </div>
         </div>
@@ -483,7 +483,7 @@ export default function App() {
           <div className="kicker">Pricing</div>
           <h2 className="h2">Soft launch plans (Jun–Aug)</h2>
           <p className="lead">
-            We’re currently recruiting <b>April beta testers</b>. Soft launch pricing starts in June with clear weekly quotas.
+            We’re currently recruiting <b>private pilot testers</b>. Soft launch pricing starts in June with clear weekly quotas.
           </p>
 
           <div className="cardGrid">
@@ -533,11 +533,11 @@ export default function App() {
               target="_blank"
               rel="noreferrer"
             >
-              Apply for April Beta
+              Apply for Private Pilot
             </a>
 
             <span className="small" style={{ alignSelf: "center" }}>
-              Beta spots are limited — we’ll reply with next steps.
+              Private pilot spots are limited — we’ll reply with next steps.
             </span>
           </div>
         </div>
@@ -547,7 +547,7 @@ export default function App() {
       <section id="request-demo" className="sectionAlt">
         <div className="container grid2">
           <div className="stack">
-            <div className="kicker">Waiting list</div>
+            <div className="kicker">Private pilot</div>
             <div className="small">
               By contacting us you agree we’ll use your details to reply. See the Privacy Policy.
             </div>
@@ -584,7 +584,7 @@ export default function App() {
               <a
                 href={betaApplyUrl}
               >
-                Apply for April Beta
+                Apply for Private Pilot
               </a>
             </div>
         </div>
