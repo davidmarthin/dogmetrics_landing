@@ -239,10 +239,9 @@ export default function App() {
         <div className="container grid2">
           <div className="stack">
             <div className="kicker">Dog agility video analysis</div>
-            <h1 className="h1">Turn long agility sessions into a structured review workflow.</h1>
+            <h1 className="h1">Turn agility training videos into structured feedback and measurable progress.</h1>
             <p className="lead">
-              DogMetrics helps you review attempts, tag key events, generate a recap, and export
-              highlight videos — so you spend less time scrubbing and more time training.
+              DogMetrics helps handlers and coaches upload training videos, review attempts, tag key events, generate recaps, and track progress across sessions.
             </p>
 
             <div className="btnRow">
@@ -273,7 +272,7 @@ export default function App() {
             </div>
 
             <div className="cardGrid" style={{ marginTop: 8 }}>
-              <div className="card"><b>Auto segmentation</b><br />Find attempts inside long recordings.</div>
+              <div className="card"><b>Structured review</b><br />Review attempts, events, and key moments in one timeline.</div>
               <div className="card"><b>Highlights</b><br />Create quick recaps for review and sharing.</div>
               <div className="card"><b>Coach tools</b><br />Notes, markers, and structured feedback.</div>
             </div>
@@ -295,7 +294,7 @@ export default function App() {
             </div>
 
             <div className="small">
-              Early access — we’re onboarding a small number of clubs and coaches for 2026 pilots.
+              Early access — we’re onboarding a small number of handlers and coaches for 2026 pilots.
             </div>
           </div>
         </div>
@@ -310,7 +309,7 @@ export default function App() {
             <div className="card">
               <div>
                 <b>1) Record</b><br />
-                Use DMCam or your current camera setup.
+                Works with your current videos. DMCam is optional.
               </div>
 
               <img
