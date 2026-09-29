@@ -26,6 +26,11 @@ export function Hero({ onWatchDemo }: { onWatchDemo: () => void }) {
               Watch demo
             </button>
           </Reveal>
+
+          <Reveal as="p" delay={300} className="heroNote">
+            Early access — onboarding a small number of handlers and coaches for 2026 private
+            pilots.
+          </Reveal>
         </div>
 
         <Reveal scale delay={120}>
@@ -40,11 +45,6 @@ export function Hero({ onWatchDemo }: { onWatchDemo: () => void }) {
             </div>
           </div>
         </Reveal>
-
-        <p className="heroNote">
-          Early access — DogMetrics is onboarding a small number of handlers and coaches for 2026
-          private pilots.
-        </p>
       </div>
     </section>
   );

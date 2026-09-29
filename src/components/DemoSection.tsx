@@ -3,11 +3,11 @@ import { Reveal } from "./Reveal";
 
 export function DemoSection({ onOpen }: { onOpen: () => void }) {
   return (
-    <section id="demo" className="demoSection section">
+    <section id="demo" className="demoSection section-tight">
       <div className="container">
         <Reveal className="sectionHead align-center">
           <span className="kicker is-orange">See it in motion</span>
-          <h2 className="h2">DogMetrics in about a minute.</h2>
+          <h2 className="h2">See DogMetrics in action.</h2>
         </Reveal>
 
         <Reveal scale delay={100}>
@@ -28,7 +28,9 @@ export function DemoSection({ onOpen }: { onOpen: () => void }) {
           </button>
         </Reveal>
 
-        <p className="demoCaption">A walkthrough of recording, review, and recap — start to finish.</p>
+        <p className="demoCaption">
+          A ~1 minute walkthrough of recording, review, and recap — start to finish.
+        </p>
       </div>
     </section>
   );

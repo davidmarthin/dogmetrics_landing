@@ -3,8 +3,8 @@ import { Reveal } from "./Reveal";
 
 export function CoachingSection({ onImageClick }: { onImageClick: (src: string) => void }) {
   return (
-    <section id="coaching" className="coaching section">
-      <div className="container grid2">
+    <section id="coaching" className="coaching section-tight">
+      <div className="container coachGrid">
         <Reveal className="stack">
           <span className="kicker is-orange">Coaching</span>
           <h2 className="h2">DogMetrics isn't just video storage.</h2>

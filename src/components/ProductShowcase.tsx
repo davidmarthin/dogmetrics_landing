@@ -5,7 +5,7 @@ import { Reveal } from "./Reveal";
 const steps = [
   {
     title: "Record or upload",
-    body: "Use DMCam or your current camera setup, then send the session to DogMetrics Cloud.",
+    body: "Use your current camera setup — or DMCam — then send the session to DogMetrics Cloud.",
     img: screens.howRecord,
     alt: "DMCam export tool with a configured time window and video preview",
   },
