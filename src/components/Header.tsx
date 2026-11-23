@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 import { betaApplyUrl } from "../content";
+import { useI18n } from "../i18n";
+import { LanguageSwitcher } from "./LanguageSwitcher";
 
 export function Header() {
+  const { t } = useI18n();
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -22,16 +25,17 @@ export function Header() {
         </a>
 
         <nav className="navLinks" aria-label="Primary">
-          <a href="#coaches">For coaches</a>
-          <a href="#handlers">For handlers</a>
-          <a href="#how-it-works">How it works</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#faq">FAQ</a>
+          <a href="#coaches">{t.nav.coaches}</a>
+          <a href="#handlers">{t.nav.handlers}</a>
+          <a href="#how-it-works">{t.nav.how}</a>
+          <a href="#pricing">{t.nav.pricing}</a>
+          <a href="#faq">{t.nav.faq}</a>
         </nav>
 
         <div className="navCta">
-          <a className="btn btnPrimary" href={betaApplyUrl} target="_blank" rel="noreferrer">
-            Apply for early access
+          <LanguageSwitcher />
+          <a className="btn btnPrimary navApply" href={betaApplyUrl} target="_blank" rel="noreferrer">
+            {t.nav.apply}
           </a>
         </div>
       </div>

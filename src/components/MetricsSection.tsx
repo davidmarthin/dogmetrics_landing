@@ -1,14 +1,17 @@
 import { screens } from "../content";
+import { useI18n } from "../i18n";
 import { Reveal } from "./Reveal";
 
 export function MetricsSection({ onImageClick }: { onImageClick: (src: string) => void }) {
+  const { t } = useI18n();
+  const p = t.progress;
   return (
     <section className="section">
       <div className="container metricsGrid">
         <Reveal scale className="metricsVisual">
           <img
             src={screens.compare}
-            alt="Two attempts on the A-frame compared side by side, synced on the zone touch"
+            alt={p.imgAlt}
             loading="lazy"
             decoding="async"
             onClick={() => onImageClick(screens.compare)}
@@ -16,15 +19,13 @@ export function MetricsSection({ onImageClick }: { onImageClick: (src: string) =
         </Reveal>
 
         <Reveal delay={100} className="stack">
-          <span className="kicker">Progress</span>
+          <span className="kicker">{p.kicker}</span>
           <p className="metricsStat">
-            A video disappears into your camera roll. <b>A DogMetrics session becomes training
-            history</b> — one you can pull back up and compare against the next.
+            {p.statA}
+            <b>{p.statBold}</b>
+            {p.statC}
           </p>
-          <p className="lead">
-            Sync two attempts to the same obstacle and play them back side by side, so a change
-            in handling or contact behaviour is easy to see rather than easy to forget.
-          </p>
+          <p className="lead">{p.lead}</p>
         </Reveal>
       </div>
     </section>

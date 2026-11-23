@@ -850,3 +850,24 @@ a:focus-visible, button:focus-visible {
 .priceValue { white-space: nowrap; font-variant-numeric: tabular-nums; }
 .priceValue small { font-weight: 500; color: var(--muted); font-size: 0.8rem; }
 @media (max-width: 920px) { .pricingRow.is-three { grid-template-columns: 1fr; } }
+
+/* ---------------------------------------------------------------- */
+/* Language switcher                                                */
+/* ---------------------------------------------------------------- */
+.srOnly { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.langSwitch select {
+  appearance: none;
+  background: transparent;
+  color: var(--muted-strong);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 12px;
+  font: inherit;
+  font-size: 0.85rem;
+  cursor: pointer;
+}
+.langSwitch select:hover { color: var(--text); border-color: var(--muted); }
+.langSwitch select:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.langSwitch option { background: var(--bg); color: var(--text); }
+@media (max-width: 1180px) { .navLinks { display: none; } }
+@media (max-width: 560px) { .navApply { display: none; } }

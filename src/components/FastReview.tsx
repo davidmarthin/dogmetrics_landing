@@ -1,26 +1,24 @@
 import { screens } from "../content";
 import { useActiveStep } from "../lib/useActiveStep";
+import { useI18n } from "../i18n";
 import { Reveal } from "./Reveal";
 
-const layers = [
-  { src: screens.rawFootage, alt: "Raw training footage of a dog on the A-frame", caption: "Raw recording" },
-  { src: screens.timeline, alt: "A session inside DogMetrics, with attempts on the timeline and a contact being labelled", caption: "Structured session" },
-];
-
 export function FastReview() {
-  const { active, setStepRef } = useActiveStep(layers.length);
+  const { t } = useI18n();
+  const f = t.fast;
+  const layers = [
+    { src: screens.rawFootage, alt: f.rawAlt, caption: f.rawCaption },
+    { src: screens.timeline, alt: f.structuredAlt, caption: f.structuredCaption },
+  ];
+  const { active, setStepRef } = useActiveStep(2);
 
   return (
     <section className="fastReview section">
       <div className="container fastReviewGrid">
         <Reveal className="fastReviewCopy stack">
-          <span className="kicker">Training happens fast</span>
-          <h2 className="h2">Review shouldn't.</h2>
-          <p className="lead">
-            A session is full of attempts, decisions and small details — but reviewing it usually
-            means scrubbing through one long recording. DogMetrics turns that footage into a
-            session you can actually move through.
-          </p>
+          <span className="kicker">{f.kicker}</span>
+          <h2 className="h2">{f.title}</h2>
+          <p className="lead">{f.lead}</p>
 
           <div className="stack-sm" style={{ marginTop: 8 }}>
             {layers.map((layer, index) => (

@@ -1,26 +1,25 @@
-import { betaApplyUrl, launchLabel, pilotEmailHref } from "../content";
+import { betaApplyUrl, pilotEmailHref } from "../content";
+import { useI18n } from "../i18n";
 import { Reveal } from "./Reveal";
 
 export function PilotCTA() {
+  const { t } = useI18n();
   return (
     <section id="request-demo" className="pilotCta">
       <div className="container">
         <Reveal className="pilotCtaInner">
-          <h2 className="h2">Train. Review. Learn. Repeat.</h2>
-          <p className="lead">
-            {launchLabel}. We're inviting a small group of coaches, and the handlers they train,
-            to start early and shape what comes next.
-          </p>
+          <h2 className="h2">{t.cta.title}</h2>
+          <p className="lead">{t.cta.lead}</p>
 
           <div className="btnRow">
             <a className="btn btnPrimary" href={betaApplyUrl} target="_blank" rel="noreferrer">
-              Apply for early access
+              {t.nav.apply}
             </a>
           </div>
 
           <p className="small">
-            By contacting us you agree we'll use your details to reply. See the{" "}
-            <a className="textLink" href="/privacy.html">Privacy Policy</a>. Prefer email? Write to{" "}
+            {t.cta.consent}{" "}
+            <a className="textLink" href="/privacy.html">{t.cta.privacy}</a>. {t.cta.emailIntro}{" "}
             <a className="textLink" href={pilotEmailHref}>demo@dog-metrics.com</a>.
           </p>
         </Reveal>
