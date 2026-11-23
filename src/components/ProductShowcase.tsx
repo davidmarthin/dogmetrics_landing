@@ -5,33 +5,33 @@ import { Reveal } from "./Reveal";
 const steps = [
   {
     title: "Record or upload",
-    body: "Use your current camera setup — or DMCam — then send the session to DogMetrics Cloud.",
-    img: screens.howRecord,
-    alt: "DMCam export tool with a configured time window and video preview",
+    body: "Record with your phone or the camera you already use, then upload the session to DogMetrics.",
+    img: screens.rawFootage,
+    alt: "Raw training footage of a dog on the A-frame",
   },
   {
     title: "Find and review attempts",
     body: "Scrub the timeline frame by frame and jump straight to the parts of the session that matter.",
     img: screens.howReview,
-    alt: "Session review timeline with frame markers",
+    alt: "Session player with frame-by-frame controls and the attempts on the recap timeline",
   },
   {
     title: "Mark what matters",
     body: "Tag attempt starts, ends, and contact-zone touches as you watch — no separate notebook.",
     img: screens.timeline,
-    alt: "Timeline with tagged events: attempt start, zone touch, attempt end",
+    alt: "Labelling a zone touch: paw position, contact result, handler side and depth",
   },
   {
     title: "Build the recap",
     body: "Turn a marked-up session into a short recap you can watch back or hand to a coach.",
     img: screens.recap,
-    alt: "Recap creation panel with a validated session",
+    alt: "A recap of 13 attempts with voice command and zone touch events listed",
   },
   {
     title: "Keep the history",
     body: "Every session stays in your library — by dog, by date, training and competition alike.",
     img: screens.howUpload,
-    alt: "Session library grouped by training, competitions, and external sessions",
+    alt: "Session library with training, competitions and shared sessions, filters and recap badges",
   },
 ];
 
@@ -42,8 +42,8 @@ export function ProductShowcase({ onImageClick }: { onImageClick: (src: string) 
     <section id="how-it-works" className="showcase section">
       <div className="container">
         <Reveal className="sectionHead">
-          <span className="kicker">One session</span>
-          <h2 className="h2">Becomes something you can actually work with.</h2>
+          <span className="kicker">How it works</span>
+          <h2 className="h2">From one recording to a review you can use.</h2>
         </Reveal>
 
         <div className="showcaseGrid">
