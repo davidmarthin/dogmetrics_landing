@@ -13,25 +13,25 @@ const steps = [
     title: "Find and review attempts",
     body: "Scrub the timeline frame by frame and jump straight to the parts of the session that matter.",
     img: screens.howReview,
-    alt: "Session review timeline with frame markers",
+    alt: "Session player with frame-by-frame controls and the attempts on the recap timeline",
   },
   {
     title: "Mark what matters",
     body: "Tag attempt starts, ends, and contact-zone touches as you watch — no separate notebook.",
     img: screens.timeline,
-    alt: "Timeline with tagged events: attempt start, zone touch, attempt end",
+    alt: "Labelling a zone touch: paw position, contact result, handler side and depth",
   },
   {
     title: "Build the recap",
     body: "Turn a marked-up session into a short recap you can watch back or hand to a coach.",
     img: screens.recap,
-    alt: "Recap creation panel with a validated session",
+    alt: "A recap of 13 attempts with voice command and zone touch events listed",
   },
   {
     title: "Keep the history",
     body: "Every session stays in your library — by dog, by date, training and competition alike.",
     img: screens.howUpload,
-    alt: "Session library grouped by training, competitions, and external sessions",
+    alt: "Session library with training, competitions and shared sessions, filters and recap badges",
   },
 ];
 

@@ -54,11 +54,11 @@ export function ForCoaches({ onImageClick }: { onImageClick: (src: string) => vo
 
           <Reveal scale delay={100} className="coachVisual">
             <img
-              src={screens.overlay}
-              alt="Coach review view with a drawing on the video frame and timestamped comments"
+              src={screens.course}
+              alt="Course editor in DogMetrics: blocks and lessons, lesson instructions, demonstration video and course map"
               loading="lazy"
               decoding="async"
-              onClick={() => onImageClick(screens.overlay)}
+              onClick={() => onImageClick(screens.course)}
             />
           </Reveal>
         </div>

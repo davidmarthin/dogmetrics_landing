@@ -4,7 +4,7 @@ import { Reveal } from "./Reveal";
 
 const layers = [
   { src: screens.rawFootage, alt: "Raw training footage of a dog on the A-frame", caption: "Raw recording" },
-  { src: screens.timeline, alt: "The same session inside the DogMetrics timeline, with attempts and events tagged", caption: "Structured session" },
+  { src: screens.timeline, alt: "A session inside DogMetrics, with attempts on the timeline and a contact being labelled", caption: "Structured session" },
 ];
 
 export function FastReview() {

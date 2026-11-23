@@ -27,8 +27,8 @@ export const screens = {
   timeline: "/screens/opt/timeline.webp",
   recap: "/screens/opt/recap.webp",
   overlay: "/screens/opt/overlay.webp",
+  course: "/screens/opt/course.webp",
   compare: "/screens/opt/compare.webp",
-  howRecord: "/screens/opt/how-record.webp",
   howUpload: "/screens/opt/how-upload.webp",
   howReview: "/screens/opt/how-review.webp",
 };

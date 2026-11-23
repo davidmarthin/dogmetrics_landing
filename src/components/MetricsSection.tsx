@@ -8,7 +8,7 @@ export function MetricsSection({ onImageClick }: { onImageClick: (src: string) =
         <Reveal scale className="metricsVisual">
           <img
             src={screens.compare}
-            alt="Two runs of the same exercise compared side by side, synced to the same obstacle"
+            alt="Two attempts on the A-frame compared side by side, synced on the zone touch"
             loading="lazy"
             decoding="async"
             onClick={() => onImageClick(screens.compare)}

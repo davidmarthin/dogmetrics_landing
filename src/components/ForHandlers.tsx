@@ -8,7 +8,7 @@ export function ForHandlers({ onImageClick }: { onImageClick: (src: string) => v
         <Reveal scale className="metricsVisual">
           <img
             src={screens.timeline}
-            alt="A training session in the DogMetrics timeline, with attempts and events tagged"
+            alt="Marking a dogwalk contact in DogMetrics: paw position, contact result and handler position, with the attempts on the timeline"
             loading="lazy"
             decoding="async"
             onClick={() => onImageClick(screens.timeline)}

@@ -34,12 +34,12 @@ export function Hero() {
         <Reveal scale delay={120}>
           <div className="heroVisual">
             <img
-              src={screens.rawFootage}
-              alt="A dog descending the A-frame contact obstacle during a recorded training session"
+              src={screens.overlay}
+              alt="Coach review in DogMetrics: arrows and circles drawn on the video frame, timestamped comments and a recorded voice note"
             />
             <div className="heroVisualTag">
-              <b>Attempt start · 176.60s</b>
-              <span>Contacts — A-frame</span>
+              <b>Feedback at 0:39.8</b>
+              <span>Drawing + voice note</span>
             </div>
           </div>
         </Reveal>
