@@ -807,3 +807,46 @@ a:focus-visible, button:focus-visible {
   outline-offset: 3px;
   border-radius: var(--radius-sm);
 }
+
+/* ---------------------------------------------------------------- */
+/* Coaches / handlers split                                         */
+/* ---------------------------------------------------------------- */
+.featureGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-4);
+  margin-top: var(--space-6);
+}
+.featureItem {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  background: var(--panel);
+}
+.featureItem b { display: block; color: var(--text); letter-spacing: -0.01em; }
+.featureItem p { margin: var(--space-2) 0 0; color: var(--muted); line-height: 1.5; font-size: 0.95rem; }
+@media (max-width: 920px) { .featureGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .featureGrid { grid-template-columns: 1fr; } }
+
+.handlerPaths { display: flex; flex-direction: column; gap: var(--space-4); }
+.handlerPath {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: var(--space-5);
+  background: var(--panel);
+}
+.handlerPath b { display: block; color: var(--text); }
+.handlerPath p { margin: var(--space-2) 0 0; color: var(--muted-strong); line-height: 1.5; }
+.handlerPath .audienceList { margin-top: var(--space-3); }
+
+.pricingGroup {
+  margin: 0;
+  font-size: var(--font-kicker);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.pricingRow.is-three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.priceValue { white-space: nowrap; font-variant-numeric: tabular-nums; }
+.priceValue small { font-weight: 500; color: var(--muted); font-size: 0.8rem; }
+@media (max-width: 920px) { .pricingRow.is-three { grid-template-columns: 1fr; } }

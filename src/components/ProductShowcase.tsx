@@ -5,9 +5,9 @@ import { Reveal } from "./Reveal";
 const steps = [
   {
     title: "Record or upload",
-    body: "Use your current camera setup — or DMCam — then send the session to DogMetrics Cloud.",
-    img: screens.howRecord,
-    alt: "DMCam export tool with a configured time window and video preview",
+    body: "Record with your phone or the camera you already use, then upload the session to DogMetrics.",
+    img: screens.rawFootage,
+    alt: "Raw training footage of a dog on the A-frame",
   },
   {
     title: "Find and review attempts",
@@ -42,8 +42,8 @@ export function ProductShowcase({ onImageClick }: { onImageClick: (src: string) 
     <section id="how-it-works" className="showcase section">
       <div className="container">
         <Reveal className="sectionHead">
-          <span className="kicker">One session</span>
-          <h2 className="h2">Becomes something you can actually work with.</h2>
+          <span className="kicker">How it works</span>
+          <h2 className="h2">From one recording to a review you can use.</h2>
         </Reveal>
 
         <div className="showcaseGrid">

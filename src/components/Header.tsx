@@ -22,15 +22,16 @@ export function Header() {
         </a>
 
         <nav className="navLinks" aria-label="Primary">
+          <a href="#coaches">For coaches</a>
+          <a href="#handlers">For handlers</a>
           <a href="#how-it-works">How it works</a>
-          <a href="#coaching">Coaching</a>
-          <a href="#demo">Demo</a>
           <a href="#pricing">Pricing</a>
+          <a href="#faq">FAQ</a>
         </nav>
 
         <div className="navCta">
           <a className="btn btnPrimary" href={betaApplyUrl} target="_blank" rel="noreferrer">
-            Apply for Private Pilot
+            Apply for early access
           </a>
         </div>
       </div>
