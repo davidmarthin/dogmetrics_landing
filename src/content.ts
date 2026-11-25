@@ -1,6 +1,5 @@
 // Shared constants: external URLs, launch copy and asset paths used across sections.
 
-export const launchLabel = "Opening January 2027";
 
 export const betaApplyUrl =
   "https://docs.google.com/forms/d/e/1FAIpQLSd7APWCUl56ZMllHzS8pYb7ytD3fessC8VxJLB8Pw6fr4Oszw/viewform?usp=header";
